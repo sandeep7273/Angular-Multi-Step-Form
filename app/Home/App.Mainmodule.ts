@@ -14,12 +14,13 @@ import { SubmitComponent } from '../Submit/App.SubmitComponent';
 import { AngularFireModule} from '@angular/fire';
 import { AngularFireDatabaseModule} from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
+import { AdminComponent } from '../Admin/App.AdminComponent';
 
 @NgModule({
   declarations: [
     MasterComponent, HomeComponent,
     RegistrationComponent, EducationComponent,
-    SubmitComponent
+    SubmitComponent, AdminComponent,
   ],
   imports: [
     BrowserModule,FormsModule,
@@ -27,15 +28,11 @@ import { environment } from 'src/environments/environment';
     HttpClientModule, ReactiveFormsModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.fireBase),
-   
-
-
-  ],
+    ],
   
   providers: [
     FormService 
   ],
-
 
   bootstrap: [MasterComponent]
 })

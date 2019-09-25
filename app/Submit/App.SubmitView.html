@@ -1,12 +1,11 @@
 <div class="link-button">
         <button class="active" [routerLink]="['/Step1']" >Home</button><br>
-        <button class="active" >Registration</button><br>
-        <button class="active"  >Education</button><br>
-        <button class="active"  >Summary</button><br>
+        <button class="active" [routerLink]="['/Step2']">Registration</button><br>
+        <button class="active" [routerLink]="['/Step3']">Education</button><br>
+        <button class="active" [routerLink]="['/Step4']" >Summary</button><br>
     </div>
 <div>
     <h4>Personal Details provided by you are as below:- </h4>
-
      <table class="table">
             <thead class="thead-light">
                 <td>Name</td>
@@ -69,6 +68,3 @@
               </tr>
               </table>
 </div>
-<!-- <div *ngFor="let cust of items ">
-    {{cust.imgUrl}}
-</div> -->

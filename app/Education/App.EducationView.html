@@ -1,8 +1,8 @@
 <div class="link-button">
-        <button class="active"  >Home</button><br>
-        <button class="active" >Registration</button><br>
-        <button class="active"  >Education</button><br>
-        <button [routerLink]="['/Step4']" >Summary</button><br>
+        <button class="active"  [routerLink]="['/Step1']">Home</button><br>
+        <button class="active"  [routerLink]="['/Step2']">Registration</button><br>
+        <button class="active"  [routerLink]="['/Step3']">Education</button><br>
+        <button [routerLink]="['/Step4']"  >Summary</button><br>
     </div>
 
 <div class="user-photo row">
@@ -25,10 +25,7 @@
                     <div class="form-group">
                             <button class="btn btn-primary"  (click)="onSubmit()">Submit</button>
                     </div>
-
-
 </div>
-
 
 <div>
     <form [formGroup]="formSignUpGroup">
@@ -50,21 +47,17 @@
             <td>{{cust.EduMarksObt}}</td>
             <td>{{cust.EduMarksMax}}</td>
             <td>{{cust.EduYear}}</td>
-
           </tr>
-         
         <tr>
             <td> <input type="button" (click)="addUser(User)"  value="Add"   [disabled]="!(formSignUpGroup.valid)"> </td>
             <td>
                 <select [(ngModel)]="UserModel.EduStandard" value="10th" [ngModelOptions]="{standalone: true}" name="User" placeholder="Standard">
-                  
                     <option [selected]="isSelected" value="10th">High School</option>
                     <option value="12th">Senior School</option>
                     <option value="Gradute">Graduation</option>
                     <option value="PG">Post Graduation</option>
                 </select>
             </td>
-           
             <td> <input type="text" [(ngModel)]="UserModel.EduStream"  formControlName="UserStreamControl">
                 <span *ngIf="formSignUpGroup.dirty"  
                 [hidden]="!hasError('UserStreamControl','required')" id="user">*Data Required</span> </td>
@@ -77,40 +70,12 @@
             <td> <input type="number" [(ngModel)]="UserModel.EduMarksMax"  formControlName="UserMarksMaxControl">
                 <span *ngIf="formSignUpGroup.dirty"  
                 [hidden]="!hasError('UserMarksMaxControl','required')" id="user">*Data Required</span> </td>
-            
             <td> <input type="number" [(ngModel)]="UserModel.EduYear"  formControlName="UserYearControl">
                 <span *ngIf="formSignUpGroup.dirty"  
                 [hidden]="!hasError('UserYearControl','required')" id="user">*Data Required</span> </td>
         </tr>
-    
-        
     </table>
 </form>
     <input  [routerLink]="['/Step4']" (click)="finalSubmit()" [disabled]='disable' type=button value="Submit"/><br>
-   
 </div>
 
-
-<!-- {{UserModel.UserName}}<br>
-{{UserModel.UserContact}}<br>
-{{UserModel.UserEmail}}<br>
-<table>
-  <tr>
-    <td>User Name</td>
-    <td>User Contact</td>
-    <td>User Email</td>
-  </tr>
-  <tr *ngFor="let cust of UserModels">
-    <td>{{cust.UserName}}</td>
-    <td>{{cust.UserContact}}</td>
-    <td>{{cust.UserEmail}}</td>
-  </tr>
-</table>
-
-
-<tr *ngFor="let item of items">
-             <td>{{ item.EduStream }}</td>
-             <td>{{ item.EduMarktObt }}</td>
-             <td>{{ item.EduPercentage }}</td>
-            <td>{{ item.EduYear }}</td>
-            </tr> -->

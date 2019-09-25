@@ -24,6 +24,19 @@ export class FormService {
   createCustomer(customer: User): void {
     this.customersRef.push(customer);
   }
+  getCustomersList(): AngularFireList<User> {
+    return this.customersRef;
+  }
+  deleteAll(): Promise<void> {
+    return this.customersRef.remove();
+  }
+  updateCustomer(key: string, value: any): Promise<void> {
+    return this.customersRef.update(key, value);
+  }
+ 
+  deleteCustomer(key: string): Promise<void> {
+    return this.customersRef.remove(key);
+  }
 
   addUser(UserModel) {
     this.items.push(UserModel);

@@ -4,7 +4,6 @@ import {HttpClient} from '@angular/common/http'
 import { FormService} from '../form.service'
 import {NgForm, FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
-
 @Component({
     templateUrl: './App.HomeView.html',
   styleUrls: ['../App.CommonStyle.css']
@@ -15,9 +14,7 @@ export class HomeComponent implements OnInit {
 
   UserModel : User = new User();
   UserModels : Array<User> = new Array<User>();
-
   disable : boolean = false;
-
   formSignUpGroup: FormGroup= null;
   
   constructor(public formService : FormService, public httpc : HttpClient ){
@@ -48,56 +45,18 @@ export class HomeComponent implements OnInit {
                                new FormControl('', Validators.compose(validationEmail)));
   }
 
-  
-  
-
-
   addUser(User){
+    this.formService.items = [];
     this.formService.addUser(this.UserModel);
     this.formService.createCustomer(this.UserModel);
-   
   }
 
   hasError(controlString: string, typeOfValidatior: string): boolean{
     this.disable = true;
-    
     return this.formSignUpGroup.controls[controlString].hasError(typeOfValidatior);
   }
 
   ngOnInit() {
-   
   }
-  // pushToServer(){
-  //   var UserData :any = {};
-  //   UserData.UserName = this.UserModel.UserName;
-  //   UserData.UserContact = this.UserModel.UserContact;
-  //   UserData.UserEmail = this.UserModel.UserEmail;
-
-  //   this.httpc.post("http://localhost:3000/Users", UserData)
-  //   .subscribe(res=>this.Success(res), res=>this.Error(res));
-  // }
-
-
-  // GetFromServer(){
-  //   this.httpc.get("http://localhost:3000/Users")
-  //   .subscribe(res=>this.Success(res), res=>this.Error(res));
-  //   this.UserModel = new User();// clear UI  
-  //   this.UserModel.UserName = this.UserModel.UserName;
-
-  // }
-
-  // Error(res){
-  //   console.debug();
-  // }
-
-  // Success(res){
-  //   this.UserModels = [res];
-  // }
-
-
-
-  Add(){
-    this.UserModels.push(this.UserModel);
-    this.UserModel = new User();// clear UI
-  }
+  
 }

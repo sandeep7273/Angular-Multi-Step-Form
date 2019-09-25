@@ -13,12 +13,10 @@ export class SubmitComponent implements OnInit {
 items;
 
   constructor( public formService: FormService, public httpc: HttpClient) {
-
   }
 
   ngOnInit() {
     this.items = this.formService.getItems();
     console.log(this.items);
   }
-
 }

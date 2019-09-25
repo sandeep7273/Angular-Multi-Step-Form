@@ -1,5 +1,3 @@
-
-
 export class User  {
     UserName: string = "";
     UserEmail: string ="";
@@ -17,8 +15,5 @@ export class User  {
     EduMarksObt : number = null;
     EduMarksMax : number = null;
     EduPercentage : number = null;
-    EduYear : number = null;
-    count : number = 0;
-    imgURL: any;
-   
+    EduYear : number = null;   
 }

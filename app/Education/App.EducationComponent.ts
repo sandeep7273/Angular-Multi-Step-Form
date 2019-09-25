@@ -5,20 +5,16 @@ import { Output, EventEmitter } from '@angular/core';
 import {NgForm, FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { User } from '../Home/App.Home.model';
 
-
 @Component({
     templateUrl: './App.EducationView.html',
   styleUrls: ['../App.CommonStyle.css']
-
 })
 
 export class EducationComponent implements OnChanges{
-    
 
   UserModel : User = new User();
   UserModels : Array<User> = new Array<User>();
   selectedFile: File = null;
-
   public imagePath;
   imgURL: any;
   public message: string;
@@ -29,7 +25,6 @@ export class EducationComponent implements OnChanges{
   uploadedFilePath: string = null;
   marksPercentage: number = null;
   formSignUpGroup: FormGroup= null;
-  
   disable : boolean = true;
 
   constructor( public formService : FormService, public httpc : HttpClient) {
@@ -67,14 +62,12 @@ export class EducationComponent implements OnChanges{
       this.preview();
   }
   hasError(controlString: string, typeOfValidatior: string): boolean{
-  
     return this.formSignUpGroup.controls[controlString].hasError(typeOfValidatior);
   }
 
   onSubmit() {
     const formData = new FormData();
     formData.append('files', this.fileData);
-     
     this.fileUploadProgress = '100%';
     this.formService.addUser( formData)
     this.httpc.post('http://localhost:3000/Profile', formData, {
@@ -90,50 +83,18 @@ export class EducationComponent implements OnChanges{
         console.log(events.body);          
         alert('SUCCESS !!');
       }
-         
     }) 
 }
-
-
-  // onUpload() {
-  //   const fd = new FormData();
-  //   fd.append('image', this.selectedFile, this.selectedFile.name);
-    // console.log(fd);
-    // return this.httpc.post('http://localhost:3000/profile', fd)
-    // .subscribe(res=>this.Success(res), res=>this.Errors(res));
-// formData.append('ComponentId', componentId);
-  // }
-  // Errors(res){
-  //     console.debug();
-  //   }
-  //   Success(res){
-  //       this.selectedFile = res;
-  //     }
-
-
-  Add(){
-    // this.UserModels.push(this.UserModel);
-    // this.UserModel = new User();// clear UI
-  }
 
   finalSubmit(){
     window.confirm('You have Succefully Uploaded data ')
   }
 
-
-
   addUser(user){
     this.formService.addUser(this.UserModel);
     this.UserModels.push(this.UserModel);
     this.formService.createCustomer(this.UserModel);
-
     this.UserModel = new User();// clear UI
     this.disable=false;
   }
-
-
-  // SelectCustomer(_Selected:User){
-  //   this.UserModel= _Selected
-  // }
-
 }
